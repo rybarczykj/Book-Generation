@@ -1,0 +1,112 @@
+# Goal: fill in this file and "monkey_domain.txt" such that
+# your corresponding rule engine models a domain with two
+# or more monkeys and one or more bananas that may be eaten
+# by the monkeys. Note: you will have to pass these new file
+# paths to the RuleEngine object that's instantiated via main.py.
+
+
+$PickUpObject
+"{PickUpper} picks up the {Object}"
+roles:
+  PickUpper:Monkey
+  Object:Prop
+preconditions:
+  !(Object is eaten)
+  !(Object is held)
+  !(PickUpper hands full)
+effects:
+  (PickUpper is holding Object)
+  (PickUpper hands full)
+  (Object is held)
+
+$DropObject
+"{Holder} drops the {Object}"
+roles:
+  Holder:Monkey
+  Object:Prop
+preconditions:
+  (Holder is holding Object)
+  (Object is held)
+effects:
+  !(Holder is holding Object)
+  !(Object is held)
+
+
+$EatBanana
+"{Eater} eats the {Food}"
+roles:
+  Eater:Monkey
+  Food:Prop
+preconditions:
+  (Eater is holding Food)
+  (Food is edible)
+effects:
+  (Food is eaten)
+  !(Food is held)
+  !(Eater is holding Food)
+  !(Eater hands full)
+
+$Trade
+"{Monkey1} trades the {Object1} for {Monkey2}\'s {Object2}"
+roles:
+  Monkey1:Monkey
+  Monkey2:Monkey
+  Object1:Prop
+  Object2:Prop
+preconditions:
+  (Monkey1 is holding Object1)
+  (Monkey2 is holding Object2)
+effects:
+  !(Monkey1 is holding Object1)
+  !(Monkey2 is holding Object2)
+  (Monkey1 is holding Object2)
+  (Monkey2 is holding Object2)
+
+$Hide
+"{Monkey} hides the {Object}"
+roles:
+  Monkey:Monkey
+  Object:Prop
+preconditions:
+  (Monkey is holding Object)
+effects:
+  (Monkey is hiding Object)
+  !(Object is held)
+  !(Monkey is holding Object)
+  !(Monkey hands full)
+
+$FetchHidden
+"{Monkey} retrieves their hidden {Object}"
+roles:
+  Monkey:Monkey
+  Object:Prop
+preconditions:
+  !(Monkey hands full)
+  (Monkey is hiding Object)
+effects:
+  (Monkey is holding Object)
+  (Monkey hands full)
+  !(Monkey is hiding Object)
+  (Object is held)
+
+
+$ClimbTree
+"{Monkey} climbs the tree"
+roles:
+  Monkey:Monkey
+preconditions:
+  !(Monkey hands full)
+  !(Monkey in tree)
+effects:
+  (Monkey in tree)
+  (Monkey hands full) #hands full with branches!
+
+$LeaveTree
+"{Monkey} leaves the tree"
+roles:
+  Monkey:Monkey
+preconditions:
+  (Monkey in tree)
+effects:
+  !(Monkey in tree)
+  !(Monkey hands full)

@@ -1,0 +1,28 @@
+<BEGIN ENTITIES>
+
+Pinkelton:Monkey
+Reiter:Monkey
+Twedell:Monkey
+Kumlander:Monkey
+
+clementine:Prop
+jackfruit:Prop
+tamarillo:Prop
+
+
+<END ENTITIES>
+
+<BEGIN FACTS>
+
+clementine is edible
+jackfruit is edible
+tamarillo is edible
+
+clementine is not eaten
+jackfruit is not eaten
+tamarillo is not eaten
+
+
+
+<END FACTS>
+

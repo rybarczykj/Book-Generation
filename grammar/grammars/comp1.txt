@@ -1,0 +1,18 @@
+ORIGIN -> <ENTITIES>\n\n<FACTS>
+
+ENTITIES -> BEGIN ENTITIES\n\n<MONKEYS>\n<FRUITS>\n\nEND ENTITIES
+
+FACTS -> BEGIN FACTS\n\n<FRUITFACTS>\n\nEND FACTS
+
+MONKEYS -> <NAME @m1>:Monkey\n<NAME @m2>:Monkey\n<NAME @m3>:Monkey\n<NAME @m4>:Monkey\n
+FRUITS -> <FRUIT @f1>:Prop\n<FRUIT @f2>:Prop\n<FRUIT @f3>:Prop\n
+OBJECTS -> <OBJECT @o1>:Prop\n<OBJECT @o2>:Prop\n<OBJECT @o3>:Prop\n
+
+NAME -> $surnames.txt
+
+FRUIT -> $fruits.txt
+
+OBJECT -> $objects.txt
+
+
+FRUITFACTS -> <@f1> is edible\n<@f2> is edible\n<@f3> is edible\n\n<@f1> is not eaten\n<@f2> is not eaten\n<@f3> is not eaten\n\n
