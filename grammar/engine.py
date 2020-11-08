@@ -374,7 +374,8 @@ class GrammarEngine:
         output = self._render_surface_form(derivation=intermediate_derivation)
         if outfile_path:
             with open(outfile_path, 'w') as outfile:
-                outfile.write(output)
+              for i in output.split("\\n"):
+                outfile.write(i + "\n")
         return output
 
     @staticmethod
