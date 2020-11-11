@@ -1,0 +1,82 @@
+<BEGIN ENTITIES>
+English Manor:Location
+
+Bar:Room
+Library:Room
+Garden:Room
+Bedroom:Room
+
+Margaret Du Pont:Character
+Professor Peabody:Character
+Dr. Phillip D. Farnsworth:Character
+Mrs. Rockefeller-Vanderbilt:Character
+Marilyn Van Den Oord:Character
+William Carmichael:Character
+
+Detective Hue:Detective
+
+George Du Pont:Character
+
+Affair:Motive
+Revenge:Motive
+Money:Motive
+Anger:Motive
+Jealousy:Motive
+
+Gun:Weapon
+Knife:Weapon
+Bottle of Poison:Weapon
+Rock:Weapon
+
+
+<END ENTITIES>
+
+<BEGIN FACTS>
+
+# levels of dislike as they escalate:
+# 1. <X> dislikes <Y>
+# 2. <X> hates <Y>
+# 3. <X> wants to kill <Y>
+
+<George Du Pont> is at manor
+
+<William Carmichael> likes alcohol
+<Marilyn Van Den Oord> likes alcohol
+<George Du Pont> likes alcohol
+
+<George Du Pont> is spouse of <Margaret Du Pont>
+<Margaret Du Pont> is spouse of <George Du Pont>
+
+
+
+<Marilyn Van Den Oord> <Affair> <George Du Pont>
+<Margaret Du Pont> <Money> <George Du Pont>
+<Margaret Du Pont> <Anger> <George Du Pont>
+<William Carmichael> <Revenge> <George Du Pont>
+<Professor Peabody> <Jealousy> <George Du Pont>
+<Dr. Phillip D. Farnsworth> <Anger> <George Du Pont>
+<Mrs. Rockefeller-Vanderbilt> <Money> <George Du Pont>
+
+
+# pairs of friends:
+<George Du Pont> likes <Marilyn Van Den Oord>
+<Marilyn Van Den Oord> likes <George Du Pont>
+
+<Dr. Phillip D. Farnsworth> likes <Mrs. Rockefeller-Vanderbilt>
+<Mrs. Rockefeller-Vanderbilt> likes <Dr. Phillip D. Farnsworth>
+
+<William Carmichael> likes <Professor Peabody>
+<Professor Peabody> likes <William Carmichael>
+
+null is motive
+
+<George Du Pont> will die tonight
+
+
+<Dr. Phillip D. Farnsworth> dislikes <George Du Pont>
+<William Carmichael> dislikes <George Du Pont>
+<Mrs. Rockefeller-Vanderbilt> dislikes <George Du Pont>
+<Margaret Du Pont> dislikes <George Du Pont>
+<Professor Peabody> dislikes <George Du Pont>
+<George Du Pont> is in <Garden>
+<END FACTS>
