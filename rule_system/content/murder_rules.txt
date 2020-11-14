@@ -1,0 +1,275 @@
+$Welcomes
+"George Du Pont welcomes everybody to the manor"
+preconditions:
+  !(party is ongoing)
+  !(investigation is ongoing)
+  !(crime is solved)
+effects:
+  (party is ongoing)
+  
+$GoToRoom
+"{Person} goes to {Room}"
+roles:
+  Room:Room
+  Person:Character
+preconditions:
+  !(Person is in Room)
+  !(Person is dead)
+  (party is ongoing)
+effects: 
+  (Person is in Room)
+
+$GetDrink
+"{Person} gets a drink"
+roles:
+  Person:Character
+preconditions:
+  (Person is in bar)
+  !(Person is tipsy)
+  (party is ongoing)
+effects: 
+  (Person is tipsy)
+  (Person likes the party)
+
+
+
+$Arguement
+"{Initiator} argues with {Recepient} about {Motive}"
+roles:
+  Initiator:Character
+  Recepient:Character
+  Friend:Character
+  Room:Room
+  Weapon:Weapon
+  Motive:Motive
+preconditions:
+  (Initiator is in Room)
+  (Recepient is in Room)
+  
+  (Initiator Motive Recepient)   
+  (Friend likes Initiator)
+  (null is motive)
+  (party is ongoing)
+effects:
+  (Initiator spoke with Recepient)
+  (Recepient spoke with Initiator)
+  (Initiator hates Recepient)
+  (Recepient hates Initiator)
+  (Friend hates Recepient)
+  (Friend likes Initiator)
+  !(null is motive)
+  (motive is Motive)
+responses:
+  GoToRoom(Room=Room, Person = Friend)
+	FriendsJumpInToHelp(Initiator=Initiator, Recepient=Recepient, Friend=Friend, Room=Room,Weapon=Weapon,Motive=Motive)
+
+$FriendsJumpInToHelp (response)
+"{Friend} argues with {Recepient} to defend {Initiator}"
+roles: 
+  Motive:Motive
+  Room:Room
+  Initiator:Character
+  Recepient:Character
+  Friend:Character
+  Weapon:Weapon
+preconditions:
+  (Friend likes Initiator)
+  (party is ongoing)
+effects: 
+  (Friend hates Recepient)
+responses: 
+  GoToSameRoom(Room=Room,Initiator=Initiator,Recepient=Recepient,Friend=Friend,Weapon=Weapon) 
+
+$Murder
+"{Initiator} and {Friend} leave {Room}, but {Victim} does not...{Weapon} is left laying by the door {Room}"
+roles:
+  Initiator:Character
+  Victim:Character
+  Weapon:Weapon
+  Room:Room
+  Friend:Friend
+preconditions:
+  (Initiator hates Victim) /(Initiator dislikes Victim)
+  !(a murder has occured)
+  (Initiator is in Room)
+  (Victim is in Room)
+  (party is ongoing)
+effects:
+  (a murder has occured)
+  (Initiator is murderer)
+  (Friend is acomplice)
+  (body is in Room)
+  (Victim is dead)
+  (Weapon is murder weapon)
+  (Room is murder room)
+
+$GoToSameRoom (response)
+"{Initiator}, {Recepient} and {Friend} meet in {Room}"
+roles: 
+  Initiator:Character
+  Recepient:Character
+  Friend:Character
+  Room:Room
+  Weapon:Weapon
+preconditions:
+  (Initiator dislikes Recepient)
+  (Friend likes Initiator)
+  !(f)
+  (party is ongoing)
+effects:
+  (Initiator is in Room)
+  (Recepient is in Room)
+  (Friend is in Room)
+  (f)
+responses:
+  Murder(Initiator=Initiator, Victim = Recepient, Room=Room, Friend=Friend, Weapon=Weapon)
+
+$FindBody
+"{Initiator} finds the body in {Room}"
+roles: 
+  Initiator:Character
+  Room:Room
+  Detective:Detective
+  Victim:Character
+preconditions:
+  (Victim is dead)
+  !(Initiator is dead)
+  (party is ongoing)
+  (body is in Room)
+  (Initiator is in Room)
+  !(Initiator is acomplice)
+  !(Initiator is murderer)
+  !(body is found)
+effects:
+  !(party is ongoing)
+  (body is found)
+responses:
+  CallDetective(Initiator=Initiator, Detective=Detective)
+
+$CallDetective (response)
+"{Initiator} calls the police. Soon, {Detective} arrives."
+roles: 
+  Initiator:Character
+  Detective:Detective
+preconditions:
+  !(investigation is ongoing)
+effects:
+  (investigation is ongoing)
+
+$FindEvidence
+"{Detective} finds the {Weapon}"
+roles:
+  Detective:Detective
+  Weapon:Weapon
+preconditions:
+!(crime is solved)
+  (investigation is ongoing)
+  (Weapon is murder weapon)
+  !(murder weapon is found)
+effects:
+  (murder weapon is found)
+responses:
+  Question(Detective=Detective)
+
+
+$Question (response)
+"{Detective} starts to question people at the manor"
+roles:
+  Detective:Detective
+preconditions:
+!(crime is solved)
+  (investigation is ongoing)
+  !(person are questioned)
+effects:
+  (people are questioned)
+  (Detective question acomplice)
+
+
+$QuestionPerson
+"{Detective} learns that {Person} has motive of {Motive} against {Victim}"
+roles:
+  Detective:Detective
+  Person:Character
+  Victim:Character
+  Motive:Motive
+  Room:Room
+  Weapon:Weapon
+preconditions:
+  (murder weapon is found)
+  !(crime is solved)
+  !(questioning over)
+  !(Person has been questioned)
+  (investigation is ongoing)
+  (Victim is dead)
+  (Person Motive Victim)
+  (Room is murder room)
+  (Weapon is murder weapon)
+effects:
+  (Person has been questioned)
+  (questioning over) if (Person is murderer) else ()
+responses:
+  RoomEst(Motive=Motive, Detective=Detective,Person=Person,Victim=Victim, Room=Room, Weapon=Weapon)
+
+$RoomEst (response)
+"{Person} admit they were in the {Room} with {Victim}, but swears they didnt do it"
+roles:
+  Motive:Motive
+  Detective:Detective
+  Person:Character
+  Victim:Character
+  Room:Room
+  Weapon:Weapon
+preconditions:
+!(crime is solved)
+  (Person is murderer)
+
+responses:
+  ClothingFound(Motive=Motive, Detective=Detective,Room=Room,Weapon=Weapon)
+
+$ClothingFound (response)
+"{Detective} finds a jacket in {Room}, previously unseen... In the pocket is a recipt for the {Weapon}!"
+roles:
+  Motive:Motive
+  Detective:Detective
+  Room:Room
+  Weapon:Weapon
+effects:
+  (clothing found)
+
+$TryOn
+"{Person} tries on jacket"
+roles:
+  Person:Character
+preconditions:
+  (clothing found)
+  !(Person tried on clothing)
+  !(crime is solved)
+effects:
+  (Person tried on clothing)
+  (crime is solved) if (Person is murderer) else ()
+  
+
+$MurdererEst
+"The jacket fits {Murderer}. The murderer is established to be {Murderer}"
+roles:
+  Murderer:Character
+  Detective:Detective
+preconditions:
+  (Murderer is murderer)
+  (crime is solved)
+  (investigation is ongoing)
+effects:
+  !(investigation is ongoing)
+  (d arrests Murderer)
+
+
+$Arrest
+"The police arrest {Murderer}"
+roles:
+  Murderer:Character
+preconditions:
+  !(story is over)
+  (Murderer is murderer)
+  (d arrests Murderer)
+effects:
+  (story is over)

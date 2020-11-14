@@ -1,0 +1,44 @@
+<BEGIN ENTITIES>
+
+Toan:Character
+Mcquirter:Character
+Perl:Character
+Dispirito:Character
+
+cry room:Room
+print room:Room
+attic:Room
+airport lounge:Room
+conservatory:Room
+
+Toan.fear = plush pony
+Mcquirter.fear = kobold
+Perl.fear = wraith
+Dispirito.fear = gargoyle
+
+Toan.they = she
+Mcquirter.they = he
+Perl.they = he
+Dispirito.they = they
+
+Toan.them = her
+Mcquirter.them = him
+Perl.them = him
+Dispirito.them = them
+
+Toan.their = her
+Mcquirter.their = his
+Perl.their = his
+Dispirito.their = their
+
+
+<END ENTITIES>
+
+<BEGIN FACTS>
+
+<Toan> is the main character
+<Toan> has 0 keys
+
+
+<END FACTS>
+

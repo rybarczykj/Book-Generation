@@ -1,0 +1,39 @@
+ORIGIN -> <ENTITIES>\n\n<FACTS>
+
+ENTITIES -> BEGIN ENTITIES\n\n<PEOPLE>\n<ROOMS>\n<FEARS>\n<THEYS>\n<THEMS>\n<THEIRS>\n\nEND ENTITIES
+
+FACTS -> BEGIN FACTS\n\n<MAINCHAR>\n\nEND FACTS
+
+
+PEOPLE -> <NAME @p1>:Character\n<NAME @p2>:Character\n<NAME @p3>:Character\n<NAME @p4>:Character\n
+ROOMS -> <ROOM @r1>:Room\n<ROOM>:Room\n<ROOM>:Room\n<ROOM>:Room\n<ROOM>:Room\n
+
+
+FEARS -> <@p1>.fear = <FEAR @f1>\n<@p2>.fear = <FEAR @f2>\n<@p3>.fear = <FEAR @f3>\n<@p4>.fear = <FEAR @f4>\n
+
+THEYS -> <@p1>.they = she\n<@p2>.they = he\n<@p3>.they = he\n<@p4>.they = they\n
+
+THEMS -> <@p1>.them = her\n<@p2>.them = him\n<@p3>.them = him\n<@p4>.them = them\n
+
+THEIRS -> <@p1>.their = her\n<@p2>.their = his\n<@p3>.their = his\n<@p4>.their = their\n
+
+
+
+
+FEARFACTS -> <@p1> fears <FEAR @f1>\n<@p2> fears <FEAR @f2>\n<@p3> fears <FEAR @f3>\n<@p4> fears <FEAR @f4>\n
+
+
+MAINCHAR -> <@p1> is the main character\n<@p1> has 0 keys\n
+
+FEAR -> <MONSTER>|<OBJECT>|<MONSTER>|<OBJECT>|<JOB>
+MONSTER -> $monsters.txt
+JOB -> $occupations.txt
+OBJECT -> $objects.txt
+
+ROOM -> $rooms.txt
+
+
+NAME -> $surnames.txt
+
+
+

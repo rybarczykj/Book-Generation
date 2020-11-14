@@ -1,0 +1,43 @@
+<BEGIN ENTITIES>
+
+
+
+Hegener:Character
+
+Hulsman:Character
+
+Faby:Character
+
+Mosses:Character
+
+Amlin:Character
+
+den:Room
+
+darkroom:Room
+
+control room:Room
+
+engine room:Room
+
+changing room:Room
+
+Hegener.fear = car
+
+Hulsman.fear = fairy
+
+Faby.fear = witch
+
+Mosses.fear = religious worker
+
+Amlin.fear = kettle operator
+
+<END ENTITIES>
+
+<BEGIN FACTS>
+
+<Hegener> is the main character
+
+<Hegener> has 0 keys
+
+<END FACTS>

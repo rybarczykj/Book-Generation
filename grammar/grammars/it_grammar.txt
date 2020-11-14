@@ -1,0 +1,40 @@
+MeetUp -> The gang met up outside the old house. "<Motivation>", <@Main> said, looking at <@Other1>, <@Other2>, and <@Other3>. "And remember: no fear". They entered the house.
+
+GoToRoom -> <@Person> moved to the <@RoomTo>
+
+Alone -> <@Person> was alone in <@Room>. <@Person.they> felt a chill as <WarningSign>.
+
+FearSequence -> Just as <@Person> became aware of the silence, <@Person.they> heard a sound. It was faint, but distinctly familiar. "<OhNo @ohno>". <adj> memories came rushing back, and a <adj> sense of <Feeling>. "It's a <@Person.fear>. My greatest fear". The sound was louder now, undeniably a <@Person.fear>, and accompanied by <Sound>. "<@ohno>", <@Person> said, looking for an escape, "it's here". It was louder again, defeaning now; a <SoundsAdj> <SoundShort>. <@Person> covered <@Person.their> ears and <Gulp>.
+
+Taken -> The lights went out and the room was enveloped in a <adj> silence and a <adj> cold. <@Person>, horrified yet relieved, turned around and screamed. <@Person.they> was face-to-face with a <FearDescriptor> <@Person.fear>. "<@ohno>". The <@Person.fear> transformed into it in it's clown form, and <@Person> was gone.
+
+
+Motivation -> <Motivate><Gang>
+Motivate -> Let's do this|We got this|Here we go|Here goes nothing
+Gang -> , gang|, guys|, team||
+
+WarningSign -> the lights dimmed|the lights flickered|the room dropped 10 degrees|the door locked loudly
+
+Saved -> Thank you!|Thanks!|Phew!|Sheesh!|Ok!
+
+OhNo -> Oh no|Shit|Oh god|Aw sheesh
+
+FindKey -> <@Person> found a key where <@MissingPerson> went missing. "Interesting"
+
+OpenDoor -> <@Person> looked a the keys <@Person.they> had collected. "Wait a minute", <@Person.they> said, noticing a small door on the ground with 4 keyholes, opening it. "Ok, <Motivate>", <@Person.they> said, entering the door, ""I hope it doesn't transform into a <@Person.fear>, my greatest fear".
+
+Confront -> It was there. It was in the form of a clown, with everyone it had captured. "Wait a minute, where'd my keys go?", it said. <@Person> yelled "hey! over here". The fight begun.
+
+Free -> <@Person>, having got a good hit on the clown, freed <@Other1>, who responded with "<Saved>".
+
+UnFree -> It faught back, transforming into a <@Person.fear>, scaring <@Person>, knocking <@Person.them> back, and recapturing <@Other1>.
+Win -> With the gang all together, <@Person> said "<Motivation>". The monster transformed into a <@Person.fear>, but <@Person> was not scared. The monster transformed into a <@Other1.fear>, but <@Other1> was not scared. It transformed into a <@Other2.fear>, but <@Other2> showed no fear. It transformed into a <@Other3.fear>, but <@Other3> held <@Other3.their> ground. Having scared nobody, it was powerless. The gang closed in on it, ending things once and for all.
+
+FearDescriptor -> bloody|rusty|undead|demonic|ugly|rotten
+Sound -> demonic laughter|the screeching of a train|a screaming person|a beating drum|a ticking clock|a dying animal|the clanging of metal
+Feeling -> dread|pain|terror|horror|panic
+adj -> sharp|horrifying|terrible|unbearable|dreadful|intense
+Gulp -> gulped|stumbled|tensed|fell
+
+SoundsAdj -> unbearable|ear-splitting|roaring|booming|shaking
+SoundShort -> echo chamber|ruckus|siren|roar

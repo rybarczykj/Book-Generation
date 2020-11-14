@@ -1,0 +1,159 @@
+$MeetUp
+"Led by {Main}, the gang enters the house"
+roles:
+    Main:Character
+    Other1:Character
+    Other2:Character
+    Other3:Character
+    Room:Room
+preconditions:
+    (Main is the main character)
+    !(gang inside house)
+effects:
+    (Room is entrance)
+    (*:Character is in Room)
+    (gang inside house)
+    (search is on)
+
+
+
+$GoToRoom
+"{Person} goes to {RoomTo}"
+roles: 
+    RoomTo:Room
+    RoomFrom:Room
+    Person:Character
+preconditions:
+    (Person is in RoomFrom)
+    !(RoomTo is locked)
+    (search is on)
+effects:
+    !(Person is in RoomFrom)
+    (Person is in RoomTo)
+    
+
+$Alone
+"{Person} is alone in {Room}. They feel a chill."
+roles:
+    Person:Character
+    Other1:Character
+    Other2:Character
+    Other3:Character
+    Room:Room
+preconditions:
+    !(Person is the main character)
+    (Person is in Room)
+    !(Other1 is in Room)
+    !(Other2 is in Room)
+    !(Other3 is in Room)
+effects:
+    (Room is locked)
+responses:
+    FearSequence(Person=Person,Room=Room)
+
+$FearSequence (response)
+"{Person} hears something"
+roles:
+    Person:Character
+    Room:Room
+preconditions:
+    (Person is in Room)
+responses:
+    Taken(Person=Person,Room=Room)
+
+$Taken (response)
+"IT takes {Person}"
+roles:
+    Person:Character
+    Room:Room
+effects:
+    (Person taken from Room)
+    !(Room is locked)
+    !(Person is in Room)
+
+$FindKey
+"{Person} finds {MissingPerson}\'s key."
+roles:
+    Person:Character
+    MissingPerson:Character
+    Room:Room
+preconditions:
+    (MissingPerson taken from Room)
+    (Person is in Room)
+    (Person is the main character)
+    !(Person found MissingPerson key)
+effects:
+    (Person found MissingPerson key)
+
+
+$OpenDoor
+"{Person} uses the keys to open the door"
+roles:
+    Person:Character
+    Other1:Character
+    Other2:Character
+    Other3:Character
+    Room:Room
+preconditions:
+    (Person is in Room)
+    (Person found Other1 key)
+    (Person found Other2 key)
+    (Person found Other3 key)
+    !(door open)
+effects:
+    (door open)
+    !(search is on)
+
+
+$Confront
+"{Person} takes on IT."
+roles:
+    Person:Character
+preconditions:
+    (Person is the main character)
+    (door open)
+    !(battle ongoing)
+    !(f)
+effects:
+    (battle ongoing)
+    (f)
+$Free
+"{Person} frees {Other1}"
+roles:
+    Person:Character
+    Other1:Character
+preconditions:
+    (Person is the main character)
+    (battle ongoing)
+    !(Other1 is free)
+effects:
+    (Other1 is free)
+
+$UnFree
+"IT retakes {Other1}"
+prob: 0.4
+roles:
+    Person:Character
+    Other1:Character
+preconditions:
+    (Person is the main character)
+    (battle ongoing)
+    (Other1 is free)
+effects:
+    !(Other1 is free)
+
+$Win
+"The gang teams up and takes down IT"
+roles:
+    Person:Character
+    Other1:Character
+    Other2:Character
+    Other3:Character
+preconditions:
+    (Person is the main character)
+    (Other1 is free)
+    (Other2 is free)
+    (Other3 is free)
+    (battle ongoing)
+effects:
+    !(battle ongoing)
